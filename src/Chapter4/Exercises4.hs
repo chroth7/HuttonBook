@@ -1,7 +1,42 @@
 module Chapter4.Exercises4
-  ( double
+  ( halve
+  , third1
+  , third2
+  , third3
+  , safetailCE
+  , safetailGE
+  , safetailPM
   ) where
 
-double :: Num a => a -> a
-double x = x * x 
+halve :: [a] -> ([a], [a])
+halve xs = (take n xs, drop n xs)
+  where n = length xs `div` 2
 
+-- third, with head/tail, bangbang, pattern matching
+third1 :: [a] -> a
+third1 xs
+  | length xs < 3 = head xs
+  | otherwise     = head $ tail $ tail xs
+
+third2 :: [a] -> a
+third2 xs
+  | length xs < 3 = head xs
+  | otherwise     = xs !! 2
+
+
+third3 :: [a] -> a
+third3 list@(_:_:x:_)
+  | length list < 3 = head list
+  | otherwise       = x
+
+safetailCE :: [a] -> [a]
+safetailCE xs = if null xs then xs else tail xs
+
+safetailGE :: [a] -> [a]
+safetailGE xs
+  | null xs = []
+  | otherwise = tail xs
+
+safetailPM :: [a] -> [a]
+safetailPM []     = []
+safetailPM (x:xs) = xs

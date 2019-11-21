@@ -1,10 +1,10 @@
 name:                HuttonBook
 version:             0.1.0.0
-github:              "githubuser/HuttonBook"
+github:              "chroth7/HuttonBook"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2019 Author name here"
+author:              "Christian Roth"
+maintainer:          "chroth@me.com"
+copyright:           "2019 Christian Roth"
 
 extra-source-files:
 - README.md
@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- hspec >= 2.7 && < 3
+- QuickCheck >= 2.13 && < 3
 
 library:
   source-dirs: src
