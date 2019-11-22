@@ -57,3 +57,11 @@ spec = do
 
     it "works for non-empty" $
       safetailPM [1..10] `shouldBe` [2..10]
+
+  describe "Luhn" $ do
+    it "works in example 1" $
+      luhn 1 7 8 4 `shouldBe` True
+
+    it "works in example 2" $
+      luhn 4 7 8 3 `shouldBe` False
+

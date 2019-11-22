@@ -2,10 +2,11 @@ module Chapter4.Exercises4
   ( halve
   , third1
   , third2
-  , third3
+  -- , third3
   , safetailCE
   , safetailGE
   , safetailPM
+  , luhn
   ) where
 
 halve :: [a] -> ([a], [a])
@@ -24,10 +25,10 @@ third2 xs
   | otherwise     = xs !! 2
 
 
-third3 :: [a] -> a
-third3 list@(_:_:x:_)
-  | length list < 3 = head list
-  | otherwise       = x
+-- third3 :: [a] -> a
+-- third3 list@(_:_:x:_)
+--   | length list < 3 = head list
+--   | otherwise       = x
 
 safetailCE :: [a] -> [a]
 safetailCE xs = if null xs then xs else tail xs
@@ -40,3 +41,12 @@ safetailGE xs
 safetailPM :: [a] -> [a]
 safetailPM []     = []
 safetailPM (x:xs) = xs
+
+luhnDouble :: Int -> Int
+luhnDouble x
+  | 2 * x >= 10  = 2 * x - 9
+  | otherwise    = 2 * x
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d = luhnSum `mod` 10 == 0
+  where luhnSum = sum [luhnDouble a,b,luhnDouble c,d]
